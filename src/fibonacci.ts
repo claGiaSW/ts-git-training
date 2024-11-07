@@ -2,15 +2,16 @@ export const computeFibonacciNumber = (position: number | null, isRecursive: boo
     if (isRecursive) return recursiveFibonacci(position);
 
     let notNullPosition = position;
+
     if (notNullPosition === null) {
         notNullPosition = 1;   
     }
 
-    if (position === 0) {
+    if (notNullPosition === 0) {
         return 0;
     }
-    if (position < 0) {
-        return computeNegativeFibonacci(position);
+    if (notNullPosition < 0) {
+        return computeNegativeFibonacci(notNullPosition);
     }
 
     if (notNullPosition === 1 || notNullPosition === 2) {
@@ -21,15 +22,17 @@ export const computeFibonacciNumber = (position: number | null, isRecursive: boo
     let largeFibonacciNumber = 1;
 
     let currentPosition = 2;
-    while (currentPosition < position) {
+
+    while (currentPosition < notNullPosition) {
         const nextFibonacciNumber = smallFibonacciNumber;
         smallFibonacciNumber = largeFibonacciNumber;
         largeFibonacciNumber += nextFibonacciNumber;
         currentPosition++;
     }
-    return largeFibonacciNumber;
+
     return largeFibonacciNumber;
 };
+
 const recursiveFibonacci = (initialPosition: number, left: number = 0, right: number = 1, position?: number): number => {
     const currentPosition = position ?? initialPosition;
     if (initialPosition === 0) return 0;
